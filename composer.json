@@ -1,5 +1,5 @@
 {
-  "name": "koombea/soleil",
+  "name": "koombea/kwb",
   "type": "project",
   "description": "A modern WordPress development environment",
   "homepage": "https://koombea.com/",
@@ -11,10 +11,10 @@
     }
   ],
   "keywords": [
-    "soleil", "koombea", "wordpress", "stack", "composer", "vagrant", "wp"
+    "kwb", "koombea", "wordpress", "stack", "composer", "vagrant", "wp"
   ],
   "support": {
-    "issues": "https://github.com/koombea/soleil/issues"
+    "issues": "https://github.com/koombea/wordpress-boilerplate/issues"
   },
   "config": {
     "preferred-install": "dist"
@@ -28,13 +28,13 @@
   "require": {
     "php": ">=5.5",
     "composer/installers": "~1.0.12",
-    "vlucas/phpdotenv": "^2.0.1",
-    "johnpbloch/wordpress": "4.5.2",
-    "oscarotero/env": "^1.0",
+    "vlucas/phpdotenv": "^2.3.0",
+    "johnpbloch/wordpress": "*",
+    "oscarotero/env": "^1.0.2",
     "roots/wp-password-bcrypt": "1.0.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^2.5.1"
+    "squizlabs/php_codesniffer": "*"
   },
   "extra": {
     "installer-paths": {

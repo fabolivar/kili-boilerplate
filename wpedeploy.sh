@@ -1,5 +1,5 @@
 # Your theme directory name (/web/app/themes/yourtheme)
-themeName="yourtheme"
+themeName="saasler"
 ########################################
 
 ####################

@@ -1,5 +1,5 @@
 # Your theme directory name (/web/app/themes/yourtheme)
-themeName="saasler"
+themeName="themename"
 ########################################
 
 ####################
@@ -18,7 +18,7 @@ currentLocalGitBranch=`git rev-parse --abbrev-ref HEAD`
 # Temporary git branch for building and deploying
 tempDeployGitBranch="wpedeployscript/${currentLocalGitBranch}"
 # KWB themes directory
-bedrockThemesDirectory="${presentWorkingDirectory}/web/app/themes/"
+ThemesDirectory="${presentWorkingDirectory}/web/app/themes/"
 
 ####################
 # Perform checks before running script
@@ -46,9 +46,9 @@ fi
 ####################
 # Halt if theme directory does not exist
 if [ ! -d "$presentWorkingDirectory"/web/app/themes/"$themeName" ]; then
-  echo -e "[\033[31mERROR\e[0m] Theme \"$themeName\" not found.\n        Set \033[32mthemeName\e[0m variable in $0 to match your theme in $bedrockThemesDirectory"
+  echo -e "[\033[31mERROR\e[0m] Theme \"$themeName\" not found.\n        Set \033[32mthemeName\e[0m variable in $0 to match your theme in $ThemesDirectory"
   echo "Available themes:"
-  ls $bedrockThemesDirectory
+  ls $ThemesDirectory
   exit 1
 fi
 

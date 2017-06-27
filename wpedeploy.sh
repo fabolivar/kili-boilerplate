@@ -10,7 +10,7 @@ themeName="themename"
 # Set variables
 ####################
 # WP Engine remote to deploy to
-wpengineRemoteName=$1
+CpanelRemoteName=$1
 # Get present working directory
 presentWorkingDirectory=`pwd`
 # Get current branch user is on
@@ -34,9 +34,9 @@ if [[ -n $(git status -s) ]]; then
 fi
 
 # Check if specified remote exist
-git ls-remote "$wpengineRemoteName" &> /dev/null
+git ls-remote "$CpanelRemoteName" &> /dev/null
 if [ "$?" -ne 0 ]; then
-  echo -e "[\033[31mERROR\e[0m] Unknown git remote \"$wpengineRemoteName\"\n        Visit \033[32mhttps://wpengine.com/git/\e[0m to set this up."
+  echo -e "[\033[31mERROR\e[0m] Unknown git remote \"$CpanelRemoteName\"\n        Visit \033[32mhttps://Cpanel.com/git/\e[0m to set this up."
   echo "Available remotes:"
   git remote -v
   exit 1
@@ -114,11 +114,11 @@ cd "$presentWorkingDirectory"
 
 git add --all &> /dev/null
 git commit -am "WP Engine build from: $(git log -1 HEAD --pretty=format:%s)$(git rev-parse --short HEAD 2> /dev/null | sed "s/\(.*\)/@\1/")" &> /dev/null
-echo "Pushing to WPEngine..."
+echo "Pushing to Cpanel..."
 
 # Push to a remote branch with a different name
 # git push remoteName localBranch:remoteBranch
-git push "$wpengineRemoteName" "$tempDeployGitBranch":master --force
+git push "$CpanelRemoteName" "$tempDeployGitBranch":master --force
 
 ####################
 # Back to a clean slate

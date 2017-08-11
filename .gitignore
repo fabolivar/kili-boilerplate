@@ -1,16 +1,16 @@
 *.log
 
 # Application
-web/app/plugins/*
-!web/app/plugins/.gitkeep
-web/app/mu-plugins/*/
-web/app/upgrade
-web/app/uploads/*
-!web/app/uploads/.gitkeep
+app/plugins/*
+!app/plugins/.gitkeep
+app/mu-plugins/*/
+app/upgrade
+app/uploads/*
+!app/uploads/.gitkeep
 
 # WordPress
-web/wp
-web/.htaccess
+wp
+.htaccess
 
 # WP-CLI
 db-sync

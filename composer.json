@@ -1,20 +1,20 @@
 {
-  "name": "koombea/kwb",
+  "name": "kwb",
   "type": "project",
   "description": "A modern WordPress development environment",
-  "homepage": "https://koombea.com/",
+  "homepage": "https://github.com/fabolivar/wordpress-boilerplate",
   "authors": [
     {
       "name": "Fabian Altahona",
-      "email": "fabian.altahona@koombea.com",
-      "homepage": "https://github.com/fabolivark"
+      "email": "fabolivar@gmail.com",
+      "homepage": "https://github.com/fabolivar"
     }
   ],
   "keywords": [
-    "kwb", "koombea", "wordpress", "stack", "composer", "vagrant", "wp"
+    "kwb", "wordpress", "stack", "composer", "vagrant", "wp"
   ],
   "support": {
-    "issues": "https://github.com/koombea/wordpress-boilerplate/issues"
+    "issues": "https://github.com/fabolivar/wordpress-boilerplate/issues"
   },
   "config": {
     "preferred-install": "dist"
@@ -29,7 +29,7 @@
     "php": ">=5.6",
     "composer/installers": "~1.2.0",
     "vlucas/phpdotenv": "^2.4.0",
-    "johnpbloch/wordpress": "4.9.1",
+    "johnpbloch/wordpress": "4.9.2",
     "oscarotero/env": "^1.1.0"
   },
   "require-dev": {

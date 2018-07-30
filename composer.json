@@ -11,7 +11,12 @@
     }
   ],
   "keywords": [
-    "kwb", "wordpress", "stack", "composer", "vagrant", "wp"
+    "kwb",
+    "wordpress",
+    "stack",
+    "composer",
+    "vagrant",
+    "wp"
   ],
   "support": {
     "issues": "https://github.com/fabolivar/wordpress-boilerplate/issues"
@@ -27,8 +32,8 @@
   ],
   "require": {
     "php": ">=5.6",
-    "composer/installers": "~1.2.0",
-    "vlucas/phpdotenv": "^2.4.0",
+    "composer/installers": "^1.4",
+    "vlucas/phpdotenv": "^2.0.1",
     "johnpbloch/wordpress": "4.9.7",
     "oscarotero/env": "^1.1.0"
   },
@@ -37,9 +42,15 @@
   },
   "extra": {
     "installer-paths": {
-      "app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
-      "app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "app/themes/{$name}/": ["type:wordpress-theme"]
+      "app/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "app/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "app/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
     },
     "wordpress-install-dir": "wp"
   },

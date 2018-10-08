@@ -1,6 +1,6 @@
-# Wordpress Boilerplate
+# Kili Boilerplate
 
-A modern WordPress stack that helps you get started with the best theme development tools and project structure.
+Kili Boilerplate is a modern WordPress stack that helps you get started with the best theme development tools and project structure.
 
 ## Features
 * Better folder structure

@@ -27,7 +27,7 @@ Kili Boilerplate is a modern WordPress stack that helps you get started with the
   * `WP_ENV` - Set to environment (`development`, `staging`, `production`)
   * `WP_HOME` - Full URL to WordPress home (https://example.dev)
   * `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT`
-    If you want to automatically generate the security keys you can search for an online salt generator (https://api.wordpress.org/secret-key/1.1/salt/)
+    If you want to automatically generate the security keys you can search for an online salt generator (https://fabolivar.github.io/salts/)
 
 ## Starting the app
 1. You can start the app with Composer, this will launch the required containers:

@@ -1,8 +1,8 @@
 {
-  "name": "kwb",
+  "name": "Kili Boilerplate",
   "type": "project",
-  "description": "A modern WordPress development environment",
-  "homepage": "https://github.com/fabolivar/wordpress-boilerplate",
+  "description": "Kili Boilerplate is a modern WordPress stack that helps you get started with the best theme development tools and project structure.",
+  "homepage": "https://github.com/fabolivar/kili-boilerplate",
   "authors": [
     {
       "name": "Fabian Altahona",
@@ -19,7 +19,7 @@
     "wp"
   ],
   "support": {
-    "issues": "https://github.com/fabolivar/wordpress-boilerplate/issues"
+    "issues": "https://github.com/fabolivar/kili-boilerplate/issues"
   },
   "config": {
     "preferred-install": "dist"
@@ -32,13 +32,13 @@
   ],
   "require": {
     "php": ">=5.6",
-    "composer/installers": "^1.4",
-    "vlucas/phpdotenv": "^2.0.1",
-    "johnpbloch/wordpress": "4.9.7",
+    "composer/installers": "^1.6.0",
+    "vlucas/phpdotenv": "^2.5.1",
+    "johnpbloch/wordpress": "^4.9.8",
     "oscarotero/env": "^1.1.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.0.2"
+    "squizlabs/php_codesniffer": "^3.3.2"
   },
   "extra": {
     "installer-paths": {
@@ -55,11 +55,8 @@
     "wordpress-install-dir": "wp"
   },
   "scripts": {
-    "post-root-package-install": [
+    "post-package-install": [
       "php -r \"copy('.env.example', '.env');\""
-    ],
-    "test": [
-      "vendor/bin/phpcs"
     ]
   }
 }

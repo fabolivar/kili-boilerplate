@@ -1,5 +1,5 @@
 # Your theme directory name (/app/themes/yourtheme)
-themeName="trullery"
+themeName="themename"
 ########################################
 
 ####################
@@ -67,14 +67,13 @@ rm .gitignore &> /dev/null
 echo -e "/*\n!wp-content/" > ./.gitignore
 
 # Copy meaningful contents of app into wp-content
-mkdir wp-content && cp -rp app/plugins wp-content && cp -rp app/themes wp-content && cp -rp app/uploads wp-content
-# mkdir wp-content && cp -rp app/themes wp-content && cp -rp app/uploads wp-content
+mkdir wp-content && cp -rp app/themes wp-content && cp -rp app/uploads wp-content
 
 # Go into theme directory
 cd "$presentWorkingDirectory/wp-content/themes/$themeName" &> /dev/null
 
 # Build theme assets
-npm install && bower install && gulp --production
+yarn install && yarn build
 
 # Back to the top
 cd "$presentWorkingDirectory"
@@ -99,11 +98,17 @@ rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/CHANGELOG.md &> /de
 rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/CONTRIBUTING.md &> /dev/null
 rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/LICENSE.md &> /dev/null
 rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/README.md &> /dev/null
+rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/webpack.config.js &> /dev/null
+rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/package-lock.json &> /dev/null
+rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/yarn.lock &> /dev/null
+
+
 # Directories
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/node_modules &> /dev/null
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/bower_components &> /dev/null
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/assets &> /dev/null
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/vendor &> /dev/null
+rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/webpack &> /dev/null
 
 ####################
 # Push to Cpanel

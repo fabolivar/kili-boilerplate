@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name:  Register Theme Directory
-Plugin URI:   https://koombea.com/
+Plugin URI:   https://www.kiliframework.org/
 Description:  Register default theme directory
 Version:      1.0.0
-Author:       Koombea
-Author URI:   https://koombea.com/
+Author:       Fabolivar
+Author URI:   https://github.com/fabolivark/
 License:      MIT License
 */
 

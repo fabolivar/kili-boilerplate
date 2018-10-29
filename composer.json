@@ -42,13 +42,13 @@
   },
   "extra": {
     "installer-paths": {
-      "app/mu-plugins/{$name}/": [
+      "wp-content/mu-plugins/{$name}/": [
         "type:wordpress-muplugin"
       ],
-      "app/plugins/{$name}/": [
+      "wp-content/plugins/{$name}/": [
         "type:wordpress-plugin"
       ],
-      "app/themes/{$name}/": [
+      "wp-content/themes/{$name}/": [
         "type:wordpress-theme"
       ]
     },

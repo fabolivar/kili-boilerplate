@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name:  Disallow Indexing
-Plugin URI:   https://koombea.com/
+Plugin URI:   https://www.kiliframework.org/
 Description:  Disallow indexing of your site on non-production environments.
 Version:      1.0.0
 Author:       Koombea
-Author URI:   https://koombea.com/
+Author URI:   https://github.com/fabolivark/
 License:      MIT License
 */
 

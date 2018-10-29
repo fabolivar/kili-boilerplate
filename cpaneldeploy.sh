@@ -1,4 +1,4 @@
-# Your theme directory name (/app/themes/yourtheme)
+# Your theme directory name (/wp-content/themes/yourtheme)
 themeName="themename"
 ########################################
 
@@ -18,7 +18,7 @@ currentLocalGitBranch=`git rev-parse --abbrev-ref HEAD`
 # Temporary git branch for building and deploying
 tempDeployGitBranch="Cpaneldeployscript/${currentLocalGitBranch}"
 # KWB themes directory
-ThemesDirectory="${presentWorkingDirectory}/app/themes/"
+ThemesDirectory="${presentWorkingDirectory}/wp-content/themes/"
 
 ####################
 # Perform checks before running script
@@ -45,7 +45,7 @@ fi
 # Directory checks
 ####################
 # Halt if theme directory does not exist
-if [ ! -d "$presentWorkingDirectory"/app/themes/"$themeName" ]; then
+if [ ! -d "$presentWorkingDirectory"/wp-content/themes/"$themeName" ]; then
   echo -e "[\033[31mERROR\e[0m] Theme \"$themeName\" not found.\n        Set \033[32mthemeName\e[0m variable in $0 to match your theme in $ThemesDirectory"
   echo "Available themes:"
   ls $ThemesDirectory
@@ -60,14 +60,14 @@ echo "Preparing theme on branch ${tempDeployGitBranch}..."
 git checkout -b "$tempDeployGitBranch" &> /dev/null
 
 # Run composer
-composer install
+pilothouse composer install
 
 # Cpanel-friendly gitignore
 rm .gitignore &> /dev/null
 echo -e "/*\n!wp-content/" > ./.gitignore
 
 # Copy meaningful contents of app into wp-content
-mkdir wp-content && cp -rp app/themes wp-content && cp -rp app/uploads wp-content
+mkdir build && mkdir build/wp-content && cp -rp wp-content/plugins build/wp-content && cp -rp wp-content/themes build/wp-content
 
 # Go into theme directory
 cd "$presentWorkingDirectory/wp-content/themes/$themeName" &> /dev/null
@@ -114,7 +114,7 @@ rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/webpack &> /dev
 # Push to Cpanel
 ####################
 git ls-files | xargs git rm --cached &> /dev/null
-cd "$presentWorkingDirectory"/wp-content/
+cd "$presentWorkingDirectory"/build/wp-content/
 find . | grep .git | xargs rm -rf
 cd "$presentWorkingDirectory"
 
@@ -130,6 +130,6 @@ git push "$CpanelRemoteName" "$tempDeployGitBranch":refs/heads/master --force
 # Back to a clean slate
 ####################
 git checkout "$currentLocalGitBranch" &> /dev/null
-rm -rf wp-content/ &> /dev/null
+rm -rf build/ &> /dev/null
 git branch -D "$tempDeployGitBranch" &> /dev/null
 echo "Done"

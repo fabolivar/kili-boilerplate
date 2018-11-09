@@ -60,7 +60,7 @@ echo "Preparing theme on branch ${tempDeployGitBranch}..."
 git checkout -b "$tempDeployGitBranch" &> /dev/null
 
 # Run composer
-composer install
+pilothouse composer install
 
 # WPE-friendly gitignore
 rm .gitignore &> /dev/null
@@ -73,7 +73,7 @@ mkdir wp-content && cp -rp app/plugins wp-content && cp -rp app/themes wp-conten
 cd "$presentWorkingDirectory/wp-content/themes/$themeName" &> /dev/null
 
 # Build theme assets
-npm install && bower install && gulp --production
+yarn install && yarn build
 
 # Back to the top
 cd "$presentWorkingDirectory"
@@ -98,11 +98,16 @@ rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/CHANGELOG.md &> /de
 rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/CONTRIBUTING.md &> /dev/null
 rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/LICENSE.md &> /dev/null
 rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/README.md &> /dev/null
+rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/webpack.config.js &> /dev/null
+rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/yarn.lock &> /dev/null
+
+
 # Directories
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/node_modules &> /dev/null
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/bower_components &> /dev/null
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/assets &> /dev/null
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/vendor &> /dev/null
+rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/webpack &> /dev/null
 
 ####################
 # Push to WP Engine

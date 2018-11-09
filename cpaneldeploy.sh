@@ -1,5 +1,5 @@
 # Your theme directory name (/app/themes/yourtheme)
-themeName="trullery"
+themeName="themename"
 ########################################
 
 ####################

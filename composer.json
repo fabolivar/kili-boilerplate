@@ -11,35 +11,50 @@
     }
   ],
   "keywords": [
-    "kwb",
+    "kili",
     "wordpress",
-    "stack",
-    "composer",
-    "vagrant",
-    "wp"
+    "composer"
   ],
   "support": {
     "issues": "https://github.com/fabolivar/kili-boilerplate/issues"
   },
   "config": {
+    "optimize-autoloader": true,
     "preferred-install": "dist"
   },
   "repositories": [
     {
       "type": "composer",
-      "url": "https://wpackagist.org"
+      "url": "https://wpackagist.org",
+      "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+    },
+    {
+      "type"                              : "package",
+      "package": {
+          "name": "kiliframework/kili-core",
+          "type": "wordpress-plugin",
+          "version": "1.0",
+          "dist": {
+            "url": "https://github.com/kiliframework/kili-core/archive/1.0.zip",
+            "type": "zip"
+          }
+      }
     }
   ],
   "require": {
-    "php": ">=5.6",
-    "composer/installers": "^1.6.0",
-    "vlucas/phpdotenv": "^3.3.3",
-    "johnpbloch/wordpress": "^5.2.3",
-    "oscarotero/env": "^1.1.0"
+    "php": ">=7.1",
+    "composer/installers": "^1.9.0",
+    "vlucas/phpdotenv": "^3.6.7",
+    "johnpbloch/wordpress": "^5.5.3",
+    "oscarotero/env": "^1.2.0",
+    "wpackagist-plugin/timber-library":"^1.18.2",
+    "kiliframework/kili-core": "1.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.3.2"
+    "squizlabs/php_codesniffer": "^3.5.8"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "extra": {
     "installer-paths": {
       "app/mu-plugins/{$name}/": [
@@ -55,8 +70,8 @@
     "wordpress-install-dir": "wp"
   },
   "scripts": {
-    "post-package-install": [
-      "php -r \"copy('.env.example', '.env');\""
+    "copy-env": [
+      "php -r \"copy('.env.example', '.env');\"// Use: composer run-script copy-env"
     ]
   }
 }

@@ -1,16 +1,28 @@
+# Your theme directory name (/app/themes/yourtheme)
 themeName="themename"
+########################################
+
+####################
+# Usage
+####################
+# bash wpedeploy.sh nameOfRemote
+####################
 # Set variables
 ####################
-# Cpanel remote URL
-RemoteName=$1
+# WP Engine remote to deploy to
+wpengineRemoteName=$1
 # Get present working directory
 presentWorkingDirectory=`pwd`
 # Get current branch user is on
 currentLocalGitBranch=`git rev-parse --abbrev-ref HEAD`
 # Temporary git branch for building and deploying
-tempDeployGitBranch="cpanelDeploy/${currentLocalGitBranch}"
+tempDeployGitBranch="wpedeployscript/${currentLocalGitBranch}"
 # KWB themes directory
 ThemesDirectory="${presentWorkingDirectory}/app/themes/"
+
+####################
+# Perform checks before running script
+####################
 
 # Git checks
 ####################
@@ -22,9 +34,9 @@ if [[ -n $(git status -s) ]]; then
 fi
 
 # Check if specified remote exist
-git ls-remote "$RemoteName" &> /dev/null
+git ls-remote "$wpengineRemoteName" &> /dev/null
 if [ "$?" -ne 0 ]; then
-  echo -e "[\033[31mERROR\e[0m] Unknown git remote \"$RemoteName\"\n"
+  echo -e "[\033[31mERROR\e[0m] Unknown git remote \"$wpengineRemoteName\"\n"
   echo "Available remotes:"
   git remote -v
   exit 1
@@ -47,26 +59,29 @@ fi
 echo "Preparing theme on branch ${tempDeployGitBranch}..."
 git checkout -b "$tempDeployGitBranch" &> /dev/null
 
+# Run composer
+pilothouse composer install
 
-# Create friendly gitignore
+# WPE-friendly gitignore
 rm .gitignore &> /dev/null
 echo -e "/*\n!wp-content/" > ./.gitignore
-echo "!.cpanel.yml" >> ./.gitignore
 
 # Copy meaningful contents of app into wp-content
-mkdir wp-content && cp -rp app/plugins wp-content && cp -rp app/themes wp-content && cp app/.cpanel.yml .
+mkdir wp-content && cp -rp app/plugins wp-content && cp -rp app/themes wp-content
 
 # Go into theme directory
 cd "$presentWorkingDirectory/wp-content/themes/$themeName" &> /dev/null
 
 # Build theme assets
-yarn install && yarn build
+yarn cache clean && yarn && yarn build
 
 # Back to the top
 cd "$presentWorkingDirectory"
 
 # Cleanup wp-content
 ####################
+# Remove sage theme cruft
+# Files
 # Remove Unnecesary Files
 rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/.gitignore &> /dev/null
 rm "$presentWorkingDirectory"/wp-content/themes/"$themeName"/package.json &> /dev/null
@@ -79,27 +94,21 @@ rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/node_modules &>
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/assets &> /dev/null
 rm -rf "$presentWorkingDirectory"/wp-content/themes/"$themeName"/webpack &> /dev/null
 
-####################
-# Push to Cpanel
-####################
-git ls-files | xargs git rm --cached &> /dev/null
-cd "$presentWorkingDirectory"/wp-content/
-find . | grep .git | xargs rm -rf
+cd wp-content/themes/
+
+zip -r -X "$themeName".zip "$themeName"/
+
+cp "$themeName".zip ~/Downloads/
+
 cd "$presentWorkingDirectory"
 
-git add --all &> /dev/null
-git commit -am "Cpanel build from: $(git log -1 HEAD --pretty=format:%s)$(git rev-parse --short HEAD 2> /dev/null | sed "s/\(.*\)/@\1/")" &> /dev/null
-echo "Pushing to CPanel..."
-
-# Push to a remote branch with a different name
-# git push remoteName localBranch:remoteBranch
-git push "$RemoteName" "$tempDeployGitBranch":master --force
+git checkout .
 
 ####################
 # Back to a clean slate
 ####################
 git checkout "$currentLocalGitBranch" &> /dev/null
 rm -rf wp-content/ &> /dev/null
-rm .cpanel.yml &> /dev/null
+rm -rf "$themeName".zip &> /dev/null
 git branch -D "$tempDeployGitBranch" &> /dev/null
 echo "Done"

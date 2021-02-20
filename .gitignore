@@ -7,7 +7,8 @@ app/mu-plugins/*/
 app/upgrade
 app/uploads/*
 !app/uploads/.gitkeep
-
+app/languages/
+app/themes/twentytwentyone/
 # WordPress
 wp
 .htaccess

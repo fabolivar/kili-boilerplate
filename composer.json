@@ -70,6 +70,9 @@
     "wordpress-install-dir": "wp"
   },
   "scripts": {
+    "post-create-project-cmd": [
+      "php \"echo('Use: composer run-script copy-env');\""
+    ],
     "copy-env": [
       "php -r \"copy('.env.example', '.env');\"// Use: composer run-script copy-env"
     ]

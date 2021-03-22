@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34bb47548f66cc4cf283ea97be58edd1",
+    "content-hash": "79ad8d727d4856a258af01329fa99c5c",
     "packages": [
         {
             "name": "composer/installers",
@@ -303,15 +303,6 @@
             "time": "2020-04-16T21:44:57+00:00"
         },
         {
-            "name": "kiliframework/kili-core",
-            "version": "1.0",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/kiliframework/kili-core/archive/1.0.zip"
-            },
-            "type": "wordpress-plugin"
-        },
-        {
             "name": "oscarotero/env",
             "version": "v1.2.0",
             "source": {
@@ -583,24 +574,6 @@
                 }
             ],
             "time": "2021-01-20T14:39:46+00:00"
-        },
-        {
-            "name": "wpackagist-plugin/timber-library",
-            "version": "1.18.2",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/timber-library/",
-                "reference": "tags/1.18.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/timber-library.1.18.2.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/timber-library/"
         }
     ],
     "packages-dev": [
